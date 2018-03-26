@@ -1,0 +1,63 @@
+<h1>venador dashboard</h1>
+<div class="container">
+<table class="table table-condensed table-bordered">
+    <thead>
+    <tr>
+        <th>S.No.</th>
+        <th>Description</th>
+        <th>Experience</th>
+        <th>Job Category</th>
+        <th>Job Location</th>
+        <!-- <th>Job Title</th> -->
+        <th>Join Within</th>
+        <th>Primary Skills</th>
+        <!-- <th>Rate Type</th> -->
+        <!-- <th>Registration Id</th> -->
+        <th>Resources</th>
+        <!-- <th>Secondary Skills</th> -->
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="x in getallreq">
+        <td>{{$index+1}}</td>
+        <td>{{x.description}}</td>
+        <td>{{x.experience}}</td>
+        <td>{{x.jobCategory}}</td>
+        <td>{{x.jobLocation}}</td>
+        <!-- <td>{{x.jobTitle}}</td> -->
+        <td>{{x.joinWithin}}</td>
+        <td>{{x.primarySkills}}</td>
+        <!-- <td>{{x.rateType}}</td> -->
+        <!-- <td>{{x.registrationId}}</td> -->
+        <td>{{x.resources}}</td>
+        <!-- <td>{{x.secondarySkills}}</td> -->
+        <td><a type="button" class="btn btn-primary butn" ng-click="requirement(x)">{{x.status}}</a></td>
+        <td><input type="button" class="btn btn-warning" value="Edit" 
+            ng-click="edit()" ui-sref="vendor.post_a_resource({postId:x.id})"></td>
+    </tr>        
+    </tbody>
+    <tfoot>  
+        <tr>  
+            <td align="center" colspan="6   ">  
+                <span class="form-group pull-left page-size form-inline">  
+                    <select id="ddlPageSize" class="form-control control-color"  
+                            ng-model="pageSizeSelected"  
+                            ng-change="changePageSize()">  
+                        <option value="1">1</option>  
+                        <option value="2">2</option>  
+                        <option value="3">3</option>  
+                        <option value="4">4</option>  
+                    </select>  
+                </span>  
+                <div class="pull-right">  
+                    <pagination total-items="totalCount" ng-change="pageChanged()" items-per-page="pageSizeSelected" direction-links="true" ng-model="pageIndex" max-size="maxSize" class="pagination" boundary-links="true" rotate="false" num-pages="numPages"></pagination>  
+                    <a class="btn btn-primary">Page: {{pageIndex}} / {{numPages}}</a>  
+                </div>  
+            </td>  
+        </tr>  
+    </tfoot>  
+</table>
+<button class="btn btn-success" ng-click="addNew()" ui-sref="vendor.vendorprofile">Add New</button>
+</div>

@@ -1,0 +1,135 @@
+<h1>upload image</h1>
+<div class="container">
+<table class="table">
+    <thead>
+        <tr>
+            <th>S.NO.</th>
+            <th>Book Name</th>
+            <th>Book Author</th>
+            <th>Department</th>
+            <th>ISBN</th>
+            <th>Quantity</th>
+            <th>Rack Number</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat = "x in books">
+          
+            <td>{{ $index+1 }}</td>
+            <td>{{ x.book_name }}</td>
+            <td>{{ x.book_author }}</td>
+            <td>{{ x.department_name }}</td>
+            <td>{{ x.ISBN }}</td>
+            <td>{{ x.quantity }}</td>
+            <td>{{ x.rack_number }}</td>
+            <td>{{ x.price }}</td>
+            <td><input type="button" class="btn btn-success" value="Edit"
+                 data-toggle="modal" data-target="#myModal"></td>
+                 <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" 
+                 data-target="#myModal">Open Modal</button>-->
+        </tr>
+    </tbody>
+</table>
+<input type="button" class="btn btn-primary" value="Add New"
+                 data-toggle="modal" data-target="#Addbook">
+</div>
+
+<!-- modal for edit -->
+<div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Edit Here</h4>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                    Book Name:<input type="text" ng-model="books.book_name" class="form-control">
+                 </div>
+                 <div class="form-group"> 
+                    Department<input type="text" ng-model="books.department_name" class="form-control">
+                 </div>
+                 <div class="form-group">
+                    ISBN:<input type="text" ng-model="books.ISBN" class="form-control">
+                 </div>
+                 <div class="form-group">
+                    Quantity:<input type="text" ng-model="books.quantity" class="form-control">
+                 </div>
+                 <div class="form-group">
+                    Rack Number<input type="number" ng-model="books.rack_number" class="form-control">
+                 </div>
+                 <div class="form-group">
+                    Price:<input type="number" ng-model="books.price" class="form-control"> 
+                 </div>
+                 <div class="form-group text-center">
+                    <button type="button" class="btn btn-success" ng-click="updatebooks()">Update</button>
+                  </div> 
+             </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+      <!-- edit modal end  -->
+
+      <!-- addbook modal -->
+      <div id="Addbook" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Addnew Row Here</h4>
+            </div>
+            <div class="modal-body">
+              <form name="addbookform">
+                <div class="form-group">
+                    Book Name:<input type="text" ng-model="x.book_name" class="form-control">
+                 </div>
+                 <div class="form-group">
+                  Book Name:<input type="text" ng-model="x.book_author" class="form-control">
+               </div>
+                 <div class="form-group"> 
+                    Department :<select class="form-control" id="department_id" ng-model="x.department_id">
+                      <option></option>
+                      <option ng-repeat="country in invent_data" value="{{country.department_id}}">
+                      {{country.department_name}}</option>
+                      </select> 
+                 </div>
+                 <div class="form-group">
+                    ISBN:<input type="text" ng-model="x.ISBN" class="form-control">
+                 </div>
+                 <div class="form-group">
+                    Quantity:<input type="text" ng-model="x.quantity" class="form-control">
+                 </div>
+                 <div class="form-group">
+                    Rack Number<input type="number" ng-model="x.rack_number" class="form-control">
+                 </div>
+                 <div class="form-group">
+                    Price:<input type="number" ng-model="x.price" class="form-control"> 
+                 </div>
+                 <div class="form-group text-center">
+                    <button type="button" class="btn btn-success" ng-click="addNew()">Submit</button>
+                  </div> 
+             </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+       <!-- addbook modal end-->
+
+</div>
+</div>

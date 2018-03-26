@@ -1,0 +1,58 @@
+<div class="container">
+<h1>vendor</h1>
+
+<div class="col-md-6">
+<select class="form-control">
+    <option ng-repeat="x in customerdetails">{{x.Name}}</option>
+</select>
+</div>
+<div class="col-md-6">
+<select class="form-control">
+    <option ng-repeat="y in customerdetails">{{y.City}}</option>
+</select>
+</div>
+<br><br>
+<div class="col-md-6">
+<select class="form-control">
+    <option ng-repeat="x in customerdetails">{{x.Country}}</option>
+</select>
+</div>
+<div class="col-md-6">
+    <select class="form-control" id ="cost" ng-model="cost" ng-change="orgCost(cost)"
+     ng-options="x.Name for x in customerdetails">
+    </select>
+</div>
+<br><br>
+<div class="col-md-6">
+    <select class="form-control" id="city" ng-model="city" ng-change="orgCity(city)"
+    ng-options="x.City for x in customerdetails">
+    </select>
+</div>
+<div class="col-md-6">
+    
+    <select class="form-control" id="coun" ng-model="coun" ng-change="orgCoun(coun)"
+    ng-options="x.Country for x in customerdetails">  
+    </select>
+</div>
+<table class="table table-condensed table-bordered">
+        <thead>
+            <tr>
+                <th>S.No.</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in customerdetails">
+                <td>{{ $index+1 }}</td>
+                <td>{{ x.Name }}</td>
+                <td>{{ x.City }}</td>
+                <td>{{ x.Country }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="col-md-4" ng-repeat="x in customerdetails">{{ x.Name }}</div>
+    <div class="col-md-4" ng-repeat="x in customerdetails">{{ x.City }}</div>
+    <div class="col-md-4" ng-repeat="x in customerdetails">{{ x.Country }}</div>
+</div>
